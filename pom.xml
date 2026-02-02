@@ -203,7 +203,7 @@
             <!-- 通用工具-->
             <dependency>
                 <groupId>com.agileboot</groupId>
-                <artifactId>agileboot-common</artifactId>
+                <artifactId>agileboot-base</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -298,9 +298,9 @@
     <modules>
         <module>agileboot-admin</module>
         <module>agileboot-api</module>
-        <module>agileboot-common</module>
         <module>agileboot-domain</module>
         <module>agileboot-infrastructure</module>
+        <module>agileboot-common</module>
     </modules>
     <packaging>pom</packaging>
 

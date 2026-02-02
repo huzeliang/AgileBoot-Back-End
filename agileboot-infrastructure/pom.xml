@@ -58,7 +58,7 @@
         <!-- 通用模块-->
         <dependency>
             <groupId>com.agileboot</groupId>
-            <artifactId>agileboot-common</artifactId>
+            <artifactId>agileboot-base</artifactId>
         </dependency>
 
 
