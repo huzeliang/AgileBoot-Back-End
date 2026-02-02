@@ -20,7 +20,7 @@
 
         <dependency>
             <groupId>com.agileboot</groupId>
-            <artifactId>agileboot-infrastructure</artifactId>
+            <artifactId>agileboot-web</artifactId>
         </dependency>
 
         <dependency>

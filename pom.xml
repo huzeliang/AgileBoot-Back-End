@@ -196,7 +196,7 @@
             <!-- 核心模块-->
             <dependency>
                 <groupId>com.agileboot</groupId>
-                <artifactId>agileboot-infrastructure</artifactId>
+                <artifactId>agileboot-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -299,7 +299,6 @@
         <module>agileboot-admin</module>
         <module>agileboot-api</module>
         <module>agileboot-domain</module>
-        <module>agileboot-infrastructure</module>
         <module>agileboot-common</module>
     </modules>
     <packaging>pom</packaging>

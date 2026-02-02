@@ -21,7 +21,7 @@
         <!-- 核心模块-->
         <dependency>
             <groupId>com.agileboot</groupId>
-            <artifactId>agileboot-infrastructure</artifactId>
+            <artifactId>agileboot-web</artifactId>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
