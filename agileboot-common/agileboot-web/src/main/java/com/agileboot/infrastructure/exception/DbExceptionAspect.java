@@ -14,16 +14,32 @@ import org.springframework.stereotype.Component;
 
 
 /**
- * @author valarchie
+ * @author hzl
  */
 @Aspect
 @Component
 @Slf4j
 public class DbExceptionAspect {
 
+    @Pointcut("execution(* com.agileboot..mapper..*(..))")
+    public void mapperLayer() {
+    }
+
+    @Pointcut("execution(* com.agileboot..manager..*(..))")
+    public void managerLayer() {
+    }
+
+    @Pointcut("execution(* com.agileboot..service..*(..))")
+    public void serviceLayer() {
+    }
 
     @Pointcut("execution(* com.agileboot..db..*(..))")
-    public void dbException() {
+    public void dbLayer() {
+    }
+
+
+    @Pointcut("mapperLayer() || managerLayer() || dbLayer()")
+    public void sqlException() {
     }
 
     /**
@@ -32,7 +48,7 @@ public class DbExceptionAspect {
      * @param joinPoint joinPoint
      * @return object
      */
-    @Around("dbException()")
+    @Around("sqlException()")
     public Object aroundDbException(ProceedingJoinPoint joinPoint) throws Throwable {
         Object proceed;
         try {
@@ -48,11 +64,11 @@ public class DbExceptionAspect {
         return proceed;
     }
 
-    @Pointcut("bean(*ApplicationService)")
-    public void applicationDbException() {
+    @Pointcut("serviceLayer() || bean(*ApplicationService)")
+    public void serviceDbException() {
     }
 
-    @Around("applicationDbException()")
+    @Around("serviceDbException()")
     public Object aroundApplicationDbException(ProceedingJoinPoint joinPoint) throws Throwable {
         Object proceed;
         try {
