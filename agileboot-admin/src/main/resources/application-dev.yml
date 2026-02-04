@@ -1,3 +1,20 @@
+server:
+    # 服务器的HTTP端口，默认为8080
+    port: 8080
+    servlet:
+        # 应用的访问路径
+        context-path: /
+    tomcat:
+        # tomcat的URI编码
+        uri-encoding: UTF-8
+        # 连接数满后的排队数，默认为100
+        accept-count: 1000
+        threads:
+            # tomcat最大线程数，默认为200
+            max: 800
+            # Tomcat启动初始化的线程数，默认值10
+            min-spare: 100
+
 # 数据源配置
 spring:
     datasource:
@@ -82,10 +99,17 @@ spring:
                 # #连接池最大阻塞等待时间（使用负值表示没有限制）
                 max-wait: -1ms
 
+
+# 日志配置
 logging:
     file:
-        path: logs
-
+        path: logs/${spring.application.name}
+    level:
+        # 记得配置到包名
+        com.agileboot: debug
+        org.springframework: info
+    pattern:
+        console: "%date requestId:%X{${agileboot.traceRequestIdKey}} %thread %green(%level) [%cyan(%logger{10}):%magenta(%line)] %red(%method) | %msg%n"
 
 springdoc:
     swagger-ui:
@@ -103,3 +127,13 @@ agileboot:
     # 前端url请求转发前缀
     api-prefix: /dev-api
     demo-enabled: false
+
+
+# token配置
+token:
+    # 令牌自定义标识
+    header: Authorization
+    # 令牌密钥 TODO 记得更换
+    secret: sdhfkjshBN6rr32df38
+    # 自动刷新token的时间（单位：分钟）
+    autoRefreshTime: 20

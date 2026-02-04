@@ -1,4 +1,4 @@
-package com.agileboot.infrastructure.config;
+package com.agileboot.api.customize.config;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.agileboot.infrastructure;
+package com.agileboot.admin;
 
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
@@ -9,8 +9,10 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
  * 将其指向应用启动类。
  * @author valarchie
  */
-public class WarDeploymentInitializer extends SpringBootServletInitializer {
+public class AgileBootAdminInitializer extends SpringBootServletInitializer {
+
 //    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 //        return application.sources(AgileBootApplication.class);
 //    }
+
 }

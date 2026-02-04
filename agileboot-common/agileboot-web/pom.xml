@@ -7,10 +7,13 @@
         <groupId>com.agileboot</groupId>
         <version>1.0.0</version>
     </parent>
-    <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>agileboot-web</artifactId>
+
+    <packaging>jar</packaging>
+
+    <version>1.0.0</version>
 
     <description>
         公用web模块
@@ -105,33 +108,5 @@
         </dependency>
 
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <fork>true</fork> <!-- 如果没有该配置，devtools不会生效 -->
-                </configuration>
-                <executions>
-                 <!--   <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>-->
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <warName>${project.artifactId}</warName>
-                </configuration>
-            </plugin>
-        </plugins>
-        <finalName>${project.artifactId}</finalName>
-    </build>
 
 </project>

@@ -11,6 +11,10 @@
 
     <artifactId>agileboot-base</artifactId>
 
+    <packaging>jar</packaging>
+
+    <version>1.0.0</version>
+
     <description>
         基础模块
     </description>
