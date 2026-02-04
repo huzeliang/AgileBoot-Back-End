@@ -37,10 +37,10 @@
         </dependency>
 
         <!-- 业务领域 -->
-        <dependency>
-            <groupId>com.agileboot</groupId>
-            <artifactId>agileboot-domain</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.agileboot</groupId>-->
+<!--            <artifactId>agileboot-domain</artifactId>-->
+<!--        </dependency>-->
 
     </dependencies>
 

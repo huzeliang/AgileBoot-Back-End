@@ -18,11 +18,23 @@
 
     <dependencies>
 
-        <!-- 业务领域 -->
+        <!-- 基础模块-->
         <dependency>
             <groupId>com.agileboot</groupId>
-            <artifactId>agileboot-domain</artifactId>
+            <artifactId>agileboot-base</artifactId>
         </dependency>
+
+        <!-- web模块-->
+        <dependency>
+            <groupId>com.agileboot</groupId>
+            <artifactId>agileboot-web</artifactId>
+        </dependency>
+
+        <!-- 业务领域 -->
+<!--        <dependency>-->
+<!--            <groupId>com.agileboot</groupId>-->
+<!--            <artifactId>agileboot-domain</artifactId>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

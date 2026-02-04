@@ -6,10 +6,10 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import com.agileboot.admin.customize.service.permission.model.checker.CustomDataPermissionChecker;
+import com.agileboot.admin.modular.sys.system.dept.db.SysDeptService;
 import com.agileboot.infrastructure.user.web.SystemLoginUser;
 import com.agileboot.infrastructure.user.web.RoleInfo;
 import com.agileboot.admin.customize.service.permission.model.DataCondition;
-import com.agileboot.domain.system.dept.db.SysDeptService;
 import org.apache.commons.collections4.SetUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

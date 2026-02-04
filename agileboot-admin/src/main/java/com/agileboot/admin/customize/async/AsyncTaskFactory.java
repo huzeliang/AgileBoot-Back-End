@@ -3,13 +3,13 @@ package com.agileboot.admin.customize.async;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.extra.servlet.ServletUtil;
 import cn.hutool.extra.spring.SpringUtil;
+import com.agileboot.admin.modular.sys.system.log.db.SysLoginInfoEntity;
+import com.agileboot.admin.modular.sys.system.log.db.SysLoginInfoService;
+import com.agileboot.admin.modular.sys.system.log.db.SysOperationLogEntity;
+import com.agileboot.admin.modular.sys.system.log.db.SysOperationLogService;
 import com.agileboot.common.utils.ServletHolderUtil;
 import com.agileboot.common.utils.ip.IpRegionUtil;
 import com.agileboot.common.enums.common.LoginStatusEnum;
-import com.agileboot.domain.system.log.db.SysLoginInfoEntity;
-import com.agileboot.domain.system.log.db.SysOperationLogEntity;
-import com.agileboot.domain.system.log.db.SysLoginInfoService;
-import com.agileboot.domain.system.log.db.SysOperationLogService;
 import eu.bitwalker.useragentutils.UserAgent;
 import lombok.extern.slf4j.Slf4j;
 

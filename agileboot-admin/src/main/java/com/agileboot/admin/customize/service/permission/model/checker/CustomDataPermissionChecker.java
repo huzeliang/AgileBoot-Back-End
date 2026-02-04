@@ -1,10 +1,10 @@
 package com.agileboot.admin.customize.service.permission.model.checker;
 
 import cn.hutool.core.collection.CollUtil;
+import com.agileboot.admin.modular.sys.system.dept.db.SysDeptService;
 import com.agileboot.infrastructure.user.web.SystemLoginUser;
 import com.agileboot.admin.customize.service.permission.model.AbstractDataPermissionChecker;
 import com.agileboot.admin.customize.service.permission.model.DataCondition;
-import com.agileboot.domain.system.dept.db.SysDeptService;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Data;

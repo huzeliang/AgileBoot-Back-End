@@ -1,7 +1,7 @@
 package com.agileboot.admin.customize.service.permission.model;
 
+import com.agileboot.admin.modular.sys.system.dept.db.SysDeptService;
 import com.agileboot.infrastructure.user.web.SystemLoginUser;
-import com.agileboot.domain.system.dept.db.SysDeptService;
 import lombok.Data;
 
 /**

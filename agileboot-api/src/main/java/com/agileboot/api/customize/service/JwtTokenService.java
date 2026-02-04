@@ -4,7 +4,6 @@ import cn.hutool.core.util.StrUtil;
 import com.agileboot.common.constant.Constants.Token;
 import com.agileboot.common.exception.ApiException;
 import com.agileboot.common.exception.error.ErrorCode;
-import com.agileboot.domain.common.cache.RedisCacheService;
 import com.agileboot.infrastructure.user.web.SystemLoginUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -43,7 +42,7 @@ public class JwtTokenService {
     @Value("${token.secret}")
     private String secret;
 
-    private final RedisCacheService redisCache;
+    // private final RedisCacheService redisCache;
 
     /**
      * 获取用户身份信息
@@ -59,7 +58,8 @@ public class JwtTokenService {
                 // 解析对应的权限以及用户信息
                 String uuid = (String) claims.get(Token.LOGIN_USER_KEY);
 
-                return redisCache.loginUserCache.getObjectOnlyInCacheById(uuid);
+                // TODO 从缓存中获取用户信息
+                // return redisCache.loginUserCache.getObjectOnlyInCacheById(uuid);
             } catch (SignatureException | MalformedJwtException | UnsupportedJwtException | IllegalArgumentException jwtException) {
                 log.error("parse token failed.", jwtException);
                 throw new ApiException(jwtException, ErrorCode.Client.INVALID_TOKEN);

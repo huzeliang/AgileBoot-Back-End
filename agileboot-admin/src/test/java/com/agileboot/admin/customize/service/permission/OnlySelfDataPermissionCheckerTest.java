@@ -5,9 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
 import com.agileboot.admin.customize.service.permission.model.checker.OnlySelfDataPermissionChecker;
+import com.agileboot.admin.modular.sys.system.dept.db.SysDeptService;
 import com.agileboot.infrastructure.user.web.SystemLoginUser;
 import com.agileboot.admin.customize.service.permission.model.DataCondition;
-import com.agileboot.domain.system.dept.db.SysDeptService;
 import org.junit.jupiter.api.Test;
 
 class OnlySelfDataPermissionCheckerTest {
