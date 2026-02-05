@@ -1,8 +1,5 @@
 package com.agileboot.infrastructure.mybatisplus;
 
-import cn.hutool.core.io.resource.ResourceUtil;
-import cn.hutool.json.JSON;
-import cn.hutool.json.JSONUtil;
 import com.agileboot.common.core.base.BaseController;
 import com.agileboot.common.core.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.FieldFill;
@@ -21,12 +18,17 @@ import com.baomidou.mybatisplus.generator.engine.VelocityTemplateEngine;
 import com.baomidou.mybatisplus.generator.fill.Column;
 import com.baomidou.mybatisplus.generator.fill.Property;
 import com.baomidou.mybatisplus.generator.keywords.MySqlKeyWordsHandler;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import lombok.Data;
-import org.yaml.snakeyaml.Yaml;
 
 /**
- * @author valarchie
+ * mybatis-plus 代码生成器
+ * <p>
+ * <a href="https://baomidou.com/reference/new-code-generator-configuration/">生成器配置文档</a>
+ *
+ * @author HZL
  */
 @Data
 @lombok.Builder
@@ -34,7 +36,7 @@ public class CodeGenerator {
 
     private String author;
     private String module;
-    private String tableName;
+    private List<String> tableName;
     private String databaseUrl;
     private String username;
     private String password;
@@ -42,26 +44,25 @@ public class CodeGenerator {
     private Boolean isExtendsFromBaseEntity;
 
     /**
-     * 避免覆盖掉原有生成的类  生成的类 放在orm子模块下的/target/generated-code目录底下
-     * 有需要更新的实体自己在手动覆盖  或者 挪动过去
+     * 避免覆盖掉原有生成的类  生成的类 放在orm子模块下的/target/generated-code目录底下 有需要更新的实体自己在手动覆盖  或者 挪动过去
      */
     public static void main(String[] args) {
         // 默认读取application-dev yml中的master数据库配置
 //        JSON ymlJson = JSONUtil.parse(new Yaml().load(ResourceUtil.getStream("application-dev.yml")));
 
-        String databaseUrl = "jdbc:mysql://localhost:33067/agileboot-pure";
+        String databaseUrl = "jdbc:mysql://localhost:3306/agileboot-pure";
         String username = "root";
-        String password = "12345";
+        String password = "medior20240611!!";
 
         CodeGenerator generator = CodeGenerator.builder()
             .databaseUrl(databaseUrl)
             .username(username)
             .password(password)
-            .author("valarchie")
-            //生成的类 放在orm子模块下的/target/generated-code目录底下
-            .module("/agileboot-orm/target/generated-code")
+            .author("HZL")
+            // 生成的类 放在orm子模块下的/target/generated-code目录底下
+            .module("/generator/admin")
             .parentPackage("com.agileboot")
-            .tableName("sys_menu")
+            .tableName(Arrays.asList("sys_dept", "sys_user"))
             // 决定是否继承基类
             .isExtendsFromBaseEntity(true)
             .build();
@@ -90,7 +91,8 @@ public class CodeGenerator {
 
 
     /**
-     * 为了避免  覆盖掉service中的方法
+     * 全局配置
+     *
      * @param generator 生成器
      */
     private void globalConfig(FastAutoGenerator generator) {
@@ -98,12 +100,13 @@ public class CodeGenerator {
             builder -> builder
                 // override old code of file
                 .fileOverride()
+                // 当前项目路径：System.getProperty("user.dir")
                 .outputDir(System.getProperty("user.dir") + module + "/src/main/java")
                 // use date type under package of java utils
                 .dateType(DateType.ONLY_DATE)
                 // 配置生成文件中的author
                 .author(author)
-//                    .enableKotlin()
+                // .enableKotlin()
                 // generate swagger annotations.
                 .enableSwagger()
                 // 注释日期的格式
@@ -111,27 +114,37 @@ public class CodeGenerator {
                 .build());
     }
 
-
+    /**
+     * 配置包名
+     *
+     * @param generator 创建器
+     */
     private void packageConfig(FastAutoGenerator generator) {
         generator.packageConfig(builder -> builder
             // parent package name
             .parent(parentPackage)
-            .moduleName("orm")
-            .entity("entity")
-            .service("service")
-            .serviceImpl("service.impl")
-            .mapper("mapper")
+            .moduleName("admin")
+            .entity("modular.entity")
+            .service("modular.service")
+            .serviceImpl("modular.service.impl")
+            .mapper("modular.mapper")
             .xml("mapper.xml")
-            .controller("controller")
+            .controller("modular.controller")
             .other("other")
             // define dir related to OutputFileType(entity,mapper,service,controller,mapper.xml)
             .pathInfo(Collections.singletonMap(OutputFile.mapperXml, System.getProperty("user.dir") + module
-                + "/src/main/resources/mapper/system/test"))
+                + "/src/main/resources/mapper"))
             .build());
     }
 
+    /**
+     * 配置模板
+     * <p>
+     * 自定义代码模板。如果没有具体要求，就禁用。
+     *
+     * @param generator 创建器
+     */
     private void templateConfig(FastAutoGenerator generator) {
-        //  customization code template. disable if you don't have specific requirement.
         generator.templateConfig(builder -> builder
             .disable(TemplateType.ENTITY)
             .entity("/templates/entity.java")
@@ -143,10 +156,11 @@ public class CodeGenerator {
             .build());
     }
 
+    /**
+     * 注入自定义配置
+     */
     private void injectionConfig(FastAutoGenerator generator) {
-        //  customization code template. disable if you don't have specific requirement.
         generator.injectionConfig(builder -> {
-            // Customization
             builder.beforeOutputFile((tableInfo, objectMap) -> System.out.println("tableInfo: " +
                     tableInfo.getEntityName() + " objectMap: " + objectMap.size()))
 //                .customMap(Collections.singletonMap("test", "baomidou"))
@@ -156,8 +170,10 @@ public class CodeGenerator {
     }
 
 
+    /**
+     * 策略配置
+     */
     private void strategyConfig(FastAutoGenerator generator) {
-        //  customization code template. disable if you don't have specific requirement.
         generator.strategyConfig(builder -> {
             builder
                 // Global Configuration
@@ -166,15 +182,18 @@ public class CodeGenerator {
                 .enableSkipView()
                 .disableSqlFilter()
                 // filter which tables need to be generated
-//                    .likeTable(new LikeTable("USER"))
-//                    .addInclude("t_simple")
-//                    .addTablePrefix("t_", "c_")
-//                    .addFieldSuffix("_flag")
+                // .likeTable(new LikeTable("USER"))
+                // .addInclude("t_simple")
+                // 移除表前缀
+                .addTablePrefix("sys_")
+                // 移除表后缀
+                // .addFieldSuffix("_flag")
                 .addInclude(tableName);
 
             entityConfig(builder);
             controllerConfig(builder);
-            serviceConfig(builder);
+            // serviceConfig(builder);
+            managerConfig(builder);
             mapperConfig(builder);
         });
     }
@@ -189,7 +208,7 @@ public class CodeGenerator {
 //                    .enableChainModel()
             .enableLombok()
             // boolean field
-//                    .enableRemoveIsPrefix()
+            // .enableRemoveIsPrefix()
             .enableTableFieldAnnotation()
             // operate entity like JPA.
             .enableActiveRecord()
@@ -239,6 +258,15 @@ public class CodeGenerator {
 //                    .superServiceImplClass(BaseServiceImpl.class)
             .formatServiceFileName("%sService")
             .formatServiceImplFileName("%sServiceImpl")
+            .build();
+    }
+
+    private void managerConfig(StrategyConfig.Builder builder) {
+        builder.serviceBuilder()
+            // .superServiceClass(BaseService.class)
+            // .superServiceImplClass(BaseServiceImpl.class)
+            .formatServiceFileName("%sManager")
+            .formatServiceImplFileName("%sManagerImpl")
             .build();
     }
 
