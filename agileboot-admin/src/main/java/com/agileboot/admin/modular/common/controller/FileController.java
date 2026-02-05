@@ -33,7 +33,7 @@ import org.springframework.web.multipart.MultipartFile;
  * TODO 需要重构
  * @author valarchie
  */
-@Tag(name = "上传API", description = "上传相关接口")
+@Tag(name = "公用接口/文件API", description = "文件上传相关接口")
 @RestController
 @RequestMapping("/file")
 @Slf4j

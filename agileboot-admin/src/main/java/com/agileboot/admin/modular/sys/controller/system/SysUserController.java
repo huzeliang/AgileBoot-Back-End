@@ -40,7 +40,7 @@ import org.springframework.web.multipart.MultipartFile;
  * 用户信息
  * @author valarchie
  */
-@Tag(name = "用户API", description = "用户相关的增删查改")
+@Tag(name = "系统设置/用户API", description = "用户相关的增删查改")
 @RestController
 @RequestMapping("/system/users")
 @RequiredArgsConstructor

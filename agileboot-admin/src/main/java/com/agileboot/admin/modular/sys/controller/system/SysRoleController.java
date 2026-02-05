@@ -38,7 +38,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author valarchie
  */
-@Tag(name = "角色API", description = "角色相关的增删查改")
+@Tag(name = "系统设置/角色API", description = "角色相关的增删查改")
 @RestController
 @RequestMapping("/system/role")
 @Validated

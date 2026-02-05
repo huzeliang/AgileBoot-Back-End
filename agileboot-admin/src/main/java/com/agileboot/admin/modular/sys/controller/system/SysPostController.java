@@ -36,7 +36,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author ruoyi
  */
-@Tag(name = "职位API", description = "职位相关的增删查改")
+@Tag(name = "系统设置/职位API", description = "职位相关的增删查改")
 @RestController
 @RequestMapping("/system/post")
 @Validated

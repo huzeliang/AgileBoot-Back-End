@@ -35,7 +35,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author valarchie
  */
-@Tag(name = "菜单API", description = "菜单相关的增删查改")
+@Tag(name = "系统设置/菜单API", description = "菜单相关的增删查改")
 @RestController
 @RequestMapping("/system/menus")
 @Validated

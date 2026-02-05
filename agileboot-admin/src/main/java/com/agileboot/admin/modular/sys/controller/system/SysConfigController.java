@@ -29,11 +29,11 @@ import org.springframework.web.bind.annotation.RestController;
  * 参数配置 信息操作处理
  * @author valarchie
  */
+@Tag(name = "系统设置/配置API", description = "配置相关的增删查改")
 @RestController
 @RequestMapping("/system")
 @Validated
 @RequiredArgsConstructor
-@Tag(name = "配置API", description = "配置相关的增删查改")
 public class SysConfigController extends BaseController {
 
     private final ConfigApplicationService configApplicationService;

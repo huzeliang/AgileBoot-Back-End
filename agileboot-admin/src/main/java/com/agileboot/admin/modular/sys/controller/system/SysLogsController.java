@@ -33,7 +33,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author valarchie
  */
-@Tag(name = "日志API", description = "日志相关API")
+@Tag(name = "系统设置/日志API", description = "日志相关API")
 @RestController
 @RequestMapping("/logs")
 @Validated

@@ -33,7 +33,7 @@ import org.springframework.web.multipart.MultipartFile;
  *
  * @author ruoyi
  */
-@Tag(name = "个人信息API", description = "个人信息相关接口")
+@Tag(name = "系统设置/个人信息API", description = "个人信息相关接口")
 @RestController
 @RequestMapping("/system/user/profile")
 @RequiredArgsConstructor

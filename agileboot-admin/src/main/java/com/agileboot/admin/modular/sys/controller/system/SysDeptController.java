@@ -31,11 +31,11 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author valarchie
  */
+@Tag(name = "系统设置/部门API", description = "部门相关的增删查改")
 @RestController
 @RequestMapping("/system")
 @Validated
 @RequiredArgsConstructor
-@Tag(name = "部门API", description = "部门相关的增删查改")
 public class SysDeptController extends BaseController {
 
     private final DeptApplicationService deptApplicationService;

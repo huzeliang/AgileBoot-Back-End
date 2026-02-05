@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author valarchie
  */
-@Tag(name = "监控API", description = "监控相关信息")
+@Tag(name = "系统设置/监控API", description = "监控相关信息")
 @RestController
 @RequestMapping("/monitor")
 @RequiredArgsConstructor

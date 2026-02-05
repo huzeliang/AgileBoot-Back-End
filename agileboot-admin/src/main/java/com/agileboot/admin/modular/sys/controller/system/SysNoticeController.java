@@ -37,7 +37,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author valarchie
  */
-@Tag(name = "公告API", description = "公告相关的增删查改")
+@Tag(name = "系统设置/公告API", description = "公告相关的增删查改")
 @RestController
 @RequestMapping("/system/notices")
 @Validated
